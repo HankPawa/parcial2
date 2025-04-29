@@ -1,0 +1,10 @@
+body {
+    background-color: #1f1b1b; /* Fondo oscuro */
+    color: #ffffff; /* Texto blanco */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    flex-direction: column;
+}

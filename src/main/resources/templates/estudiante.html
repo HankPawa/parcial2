@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creador</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light text-center">
+    <div class="container mt-5">
+        <h1 class="text-info">Bienvenido Estudiante</h1>
+        <p class="lead">Puedes crear contenido y gestionar tus proyectos.</p>
+        <form th:action="@{/logout}" method="post" style="display: inline;">
+            <button type="submit" class="btn btn-danger mt-3">Cerrar Sesión</button>
+        </form>
+    </div>
+</body>
+</html>

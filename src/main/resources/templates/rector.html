@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rector</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light text-center">
+    <div class="container mt-5">
+        <h1 class="text-success">Bienvenido Rector</h1>
+        <p class="lead">Tienes permisos para gestionar las asignaturas.</p>
+
+        <!-- Botón para crear una nueva asignatura -->
+        <a href="/rector/asignaturas/crear" class="btn btn-success mt-3">Crear Nueva Asignatura</a>
+
+        <!-- Tabla para listar asignaturas -->
+        <div class="mt-4">
+            <h2 class="text-primary">Lista de Asignaturas</h2>
+            <table class="table table-striped mt-3">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Descripción</th>
+                        <th>Salón</th>
+                        <th>Horario</th>
+                        <th>Docente Encargado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="asignatura : ${asignaturas}">
+                        <td th:text="${asignatura.nombre}"></td>
+                        <td th:text="${asignatura.descripcion}"></td>
+                        <td th:text="${asignatura.salon}"></td>
+                        <td th:text="${asignatura.horaInicio} + ' - ' + ${asignatura.horaFin}"></td>
+                        <td th:text="${asignatura.docenteEncargado.username}"></td>
+                        <td>
+                            <a th:href="@{'/rector/asignaturas/editar/' + ${asignatura.id}}" class="btn btn-warning btn-sm">Editar</a>
+                            <form th:action="@{'/rector/asignaturas/eliminar/' + ${asignatura.id}}" method="post" style="display: inline;">
+                                <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                            </form>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Botón para cerrar sesión -->
+        <form th:action="@{/logout}" method="post" style="display: inline;">
+            <button type="submit" class="btn btn-danger mt-3">Cerrar Sesión</button>
+        </form>
+    </div>
+</body>
+</html>
