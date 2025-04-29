@@ -28,14 +28,20 @@ public class DocenteController {
     @Operation(summary = "Listar asignaturas del docente", description = "Obtiene una lista de las asignaturas asignadas al docente autenticado.")
     @GetMapping("/docente/asignaturas")
     public String listarAsignaturasDocente(Model model, Authentication authentication) {
+        // Obtener el nombre del usuario autenticado
         String username = authentication.getName();
+
+        // Buscar el docente en la base de datos
         UserEntity docente = userRepository.findByUsername(username)
             .orElseThrow(() -> new RuntimeException("Docente no encontrado"));
 
+        // Filtrar las asignaturas asignadas al docente
         List<AsignaturaEntity> asignaturas = asignaturaRepository.findByDocenteEncargado(docente);
+
+        // Pasar las asignaturas al modelo
         model.addAttribute("asignaturas", asignaturas);
 
-        return "docente";
+        return "docente"; // Renderizar la vista "docente.html"
     }
 
     @Operation(summary = "Actualizar horario", description = "Permite al docente actualizar el horario de una asignatura asignada.")

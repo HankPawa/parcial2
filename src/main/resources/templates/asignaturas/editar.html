@@ -18,6 +18,13 @@
                 <label for="horaFin" class="form-label">Hora de Fin:</label>
                 <input type="time" id="horaFin" name="horaFin" class="form-control" th:value="${asignatura.horaFin}" required>
             </div>
+            <div class="mb-3">
+                <label for="docenteId" class="form-label">Docente Encargado:</label>
+                <select id="docenteId" name="docenteId" class="form-control" required>
+                    <option th:each="docente : ${docentes}" th:value="${docente.id}" th:text="${docente.username}" 
+                        th:selected="${docente.id == asignatura.docenteEncargado.id}"></option>
+                </select>
+            </div>
             <button type="submit" class="btn btn-primary">Guardar</button>
         </form>
     </div>

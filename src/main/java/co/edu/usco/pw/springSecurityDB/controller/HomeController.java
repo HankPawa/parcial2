@@ -25,5 +25,20 @@ public class HomeController {
     public String pageNotFound() {
         return "404";
     }
+
+    @GetMapping("/rector")
+    public String showRectorPage() {
+        return "rector"; 
+    }
+
+    @GetMapping("/docente")
+    public String showDocentePage() {
+        return "docente"; 
+    }
+
+    @GetMapping("/estudiante")
+    public String showEstudiantePage() {
+        return "estudiante"; 
+    }
 }
 

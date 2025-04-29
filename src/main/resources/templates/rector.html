@@ -8,15 +8,15 @@
 </head>
 <body class="bg-light text-center">
     <div class="container mt-5">
-        <h1 class="text-success">Bienvenido Rector</h1>
+        <h1>Bienvenido Rector</h1>
         <p class="lead">Tienes permisos para gestionar las asignaturas.</p>
 
-        <!-- Botón para crear una nueva asignatura -->
-        <a href="/rector/asignaturas/crear" class="btn btn-success mt-3">Crear Nueva Asignatura</a>
-
-        <!-- Tabla para listar asignaturas -->
         <div class="mt-4">
-            <h2 class="text-primary">Lista de Asignaturas</h2>
+            <h2>Lista de Asignaturas</h2>
+            
+            <div class="text-center mb-3">
+                <a href="/rector/asignaturas/crear" class="btn btn-success">Crear Nueva Asignatura</a>
+            </div>
             <table class="table table-striped mt-3">
                 <thead>
                     <tr>
@@ -51,5 +51,6 @@
             <button type="submit" class="btn btn-danger mt-3">Cerrar Sesión</button>
         </form>
     </div>
+
 </body>
 </html>

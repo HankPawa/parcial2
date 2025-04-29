@@ -28,6 +28,7 @@ public class AsignaturaController {
     @GetMapping
     public String listarAsignaturas(Model model) {
         List<AsignaturaEntity> asignaturas = asignaturaRepository.findAll();
+        System.out.println("Registros cargados: " + asignaturas.size()); // Mensaje de depuración
         model.addAttribute("asignaturas", asignaturas);
         return "rector";
     }
@@ -58,8 +59,12 @@ public class AsignaturaController {
     @GetMapping("/editar/{id}")
     public String mostrarFormularioEditar(@PathVariable Long id, Model model) {
         model.addAttribute("asignatura", asignaturaRepository.findById(id).orElseThrow());
-        model.addAttribute("docentes", userRepository.findAll());
-        return "asignaturas/edit";
+        List<UserEntity> docentes = userRepository.findAll()
+                .stream()
+                .filter(user -> user.getRoles().stream().anyMatch(role -> role.getName().equals("DOCENTE")))
+                .toList();
+        model.addAttribute("docentes", docentes);
+        return "asignaturas/edit"; // Asegúrate de que esta vista exista
     }
 
     @Operation(summary = "Editar asignatura", description = "Actualiza los datos de una asignatura existente.")

@@ -79,11 +79,11 @@ public class SecurityConfig {
             @Override
             public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
                 if (authentication.getAuthorities().contains(new SimpleGrantedAuthority("ROLE_RECTOR"))) {
-                    response.sendRedirect("/rector");
+                    response.sendRedirect("/rector/asignaturas");
                 } else if (authentication.getAuthorities().contains(new SimpleGrantedAuthority("ROLE_DOCENTE"))) {
-                    response.sendRedirect("/docente");
+                    response.sendRedirect("/docente/asignaturas");
                 } else if (authentication.getAuthorities().contains(new SimpleGrantedAuthority("ROLE_ESTUDIANTE"))) {
-                    response.sendRedirect("/estudiante");
+                    response.sendRedirect("/estudiante/asignaturas");
                 } else {
                     response.sendRedirect("/login");
                 }
